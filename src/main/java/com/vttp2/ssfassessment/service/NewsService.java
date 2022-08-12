@@ -37,8 +37,8 @@ import org.slf4j.LoggerFactory;
 @Service
 public class NewsService {
 
-    @Value("${crypto.apikey}")
-    String apiKey;
+    // @Value("${crypto.apikey}")
+    // String apiKey;
 
     String payload;
 
@@ -52,6 +52,7 @@ public class NewsService {
     private static String URL = "https://min-api.cryptocompare.com/data/v2/news/?lang=EN";
 
     public List<News> getArticles () {
+        String apiKey = System.getenv("CRYPTO_API_KEY");
         try {
             String url = UriComponentsBuilder.fromUriString(URL)
                 .queryParam("ApiKey", apiKey)
