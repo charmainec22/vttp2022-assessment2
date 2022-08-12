@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Article</title>
+</head>
+
+<body>
+    <form method="POST" action="@{/articles}">
+    <h1>Crypto News of the Day</h1>
+    <input type="submit" value="Save">
+    <div data-th-each="n : ${news}">
+        <table style="width:100%">
+            <tr>
+                <td style="width:20%; border: 1px solid black;">
+                    <img data-th-src="${n.imageurl}" style="width: 30%;">
+                </td>
+                <td style="width:80%; border: 1px solid black;"> 
+                    <p>Id: <span data-th-text="${n.id}"></span></p>
+                    <p>Published On: <span data-th-text="${n.published_on}"></span></p>
+                    <p>Article Title: <span data-th-text="${n.title}"></span></p>
+                    <p>URL: <span data-th-text="${n.url}"></span></p>
+                    <p>Summary of Article: <span data-th-text="${n.body}"></span></p>
+                    <p>Tags: <span data-th-text="${n.tags}"></span></p>
+                    <p>Categories: <span data-th-text="${n.categories}"></span></p>
+                    <p><input type="checkbox" id="{n.id}">Save</p>
+                </td>
+
+            </tr>
+        </table>
+    </div>
+</form>
+</body>
+
+</html>
